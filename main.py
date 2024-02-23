@@ -1,6 +1,10 @@
 import cv2
 import numpy as np
 
+
+# This Python script is used to calculate the Visible Atmospherically Resistant Index (VARI) for an image and save the resulting VARI image.
+
+
 def calculate_vari(image_path):
     # Read the orthomosaic map image
     image = cv2.imread(image_path)
