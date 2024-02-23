@@ -1,6 +1,21 @@
 import cv2
 import numpy as np
 
+
+# VARI is calculated using the following formula:
+# VARI = (G - R) / (G + R - B)
+
+# where:
+# G is the green channel
+# R is the red channel
+# B is the blue channel
+
+# it is used to detect the vegetation in the image
+
+
+
+# Define the VARI calculation function
+
 def calculate_vari(image_path):
     image = cv2.imread(image_path)
     R, G, B = cv2.split(image)
