@@ -1,21 +1,6 @@
 import cv2
 import numpy as np
 
-
-# VARI is calculated using the following formula:
-# VARI = (G - R) / (G + R - B)
-
-# where:
-# G is the green channel
-# R is the red channel
-# B is the blue channel
-
-# it is used to detect the vegetation in the image
-
-
-
-# Define the VARI calculation function
-
 def calculate_vari(image_path):
     image = cv2.imread(image_path)
     R, G, B = cv2.split(image)
@@ -28,12 +13,12 @@ def save_vari_image(vari, output_path):
     # Normalize VARI values to the range [0, 1] for mapping
     normalized_vari = (vari - np.min(vari)) / (np.max(vari) - np.min(vari) + 1e-8)
 
-    # Create a custom color map
+    # Create a custom color map with 256 colors
     colors = [(0, 0, 255), (0, 255, 0)]  # BGR format
     cmap = np.linspace(colors[0], colors[1], 256).astype(np.uint8)
 
     # Apply the custom color map using cv2.applyColorMap
-    vari_display = cv2.applyColorMap((normalized_vari * 255).astype(np.uint8), cmap)
+    vari_display = cv2.applyColorMap((normalized_vari * 255).astype(np.uint8), cv2.COLORMAP_JET)
 
     cv2.imwrite(output_path, vari_display)
 
