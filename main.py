@@ -29,7 +29,7 @@ if __name__ == "__main__":
     ortho_image_path = "../images/field.jpg"
 
     # Output path for the VARI image
-    output_vari_path = "path/to/save/vari_image.jpg"
+    output_vari_path = "../images/vari_field.jpg"
 
     # Calculate VARI
     vari_result = calculate_vari(ortho_image_path)
