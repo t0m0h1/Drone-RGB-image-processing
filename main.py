@@ -26,7 +26,7 @@ def save_vari_image(vari, output_path):
 
 if __name__ == "__main__":
     # Input path for the orthomosaic map image
-    ortho_image_path = "/images/field.jpg"
+    ortho_image_path = "images/field.jpg"
 
     # Output path for the VARI image
     output_vari_path = "/images/vari_field.jpg"
