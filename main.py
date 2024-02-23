@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import matplotlib.pyplot as plt
 
 def calculate_vari(image_path):
     image = cv2.imread(image_path)
@@ -12,6 +13,13 @@ def calculate_vari(image_path):
 def save_vari_image(vari, output_path):
     # Normalize VARI values to the range [0, 1] for mapping
     normalized_vari = (vari - np.min(vari)) / (np.max(vari) - np.min(vari) + 1e-8)
+
+    # Display histogram to understand the distribution of VARI values
+    plt.hist(normalized_vari.flatten(), bins=50, color='c', edgecolor='k', alpha=0.7)
+    plt.title('VARI Distribution')
+    plt.xlabel('Normalized VARI Values')
+    plt.ylabel('Frequency')
+    plt.show()
 
     # Create a custom color map with 256 colors
     colors = [(0, 0, 255), (0, 255, 0)]  # BGR format
