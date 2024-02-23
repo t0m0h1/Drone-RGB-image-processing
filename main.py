@@ -23,10 +23,13 @@ def calculate_vari(image_path):
     return VARI
 
 
+
+
 def save_vari_image(vari, output_path):
-    # Manually set the min and max values for normalization
-    min_val = -1
-    max_val = 1
+    # Dynamically set the min and max values for normalization
+    # this is so that we avoid gray images
+    min_val = np.min(vari)
+    max_val = np.max(vari)
 
     # Normalize VARI values to the range [0, 255] for display
     normalized_vari = 255 * (vari - min_val) / (max_val - min_val)
@@ -39,6 +42,10 @@ def save_vari_image(vari, output_path):
 
     # Save the VARI image
     cv2.imwrite(output_path, vari_display)
+
+
+
+# Driver code 
 
 if __name__ == "__main__":
     # Input path for the orthomosaic map image
