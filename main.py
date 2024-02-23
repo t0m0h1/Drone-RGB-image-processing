@@ -22,9 +22,17 @@ def calculate_vari(image_path):
 
     return VARI
 
+
 def save_vari_image(vari, output_path):
+    # Manually set the min and max values for normalization
+    min_val = -1
+    max_val = 1
+
     # Normalize VARI values to the range [0, 255] for display
-    normalized_vari = cv2.normalize(vari, None, 0, 255, cv2.NORM_MINMAX)
+    normalized_vari = 255 * (vari - min_val) / (max_val - min_val)
+
+    # Clip values outside the range [0, 255]
+    normalized_vari = np.clip(normalized_vari, 0, 255)
 
     # Convert to uint8 for display and saving
     vari_display = normalized_vari.astype(np.uint8)
