@@ -33,6 +33,10 @@ def save_vari_image(vari, output_path):
     # Save the VARI image
     cv2.imwrite(output_path, vari_display)
 
+
+
+    
+
 if __name__ == "__main__":
     ortho_image_path = "images/field.jpg"
     output_vari_path = "images/vari_field.jpg" # Output path for the VARI image
