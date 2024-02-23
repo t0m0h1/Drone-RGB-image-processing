@@ -21,8 +21,8 @@ def save_savi_image(savi, output_path):
     plt.ylabel('Frequency')
     plt.show()
 
-    # Create a custom color map with green emphasis
-    cmap = plt.get_cmap('viridis')
+    # Create a custom color map with green emphasis using 'cividis'
+    cmap = plt.get_cmap('cividis')
 
     # Apply the custom color map using cv2.applyColorMap
     savi_display = (cmap(normalized_savi) * 255).astype(np.uint8)
