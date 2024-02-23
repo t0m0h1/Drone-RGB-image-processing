@@ -5,6 +5,7 @@ import numpy as np
 # This Python script is used to calculate the Visible Atmospherically Resistant Index (VARI) for an image and save the resulting VARI image.
 
 
+
 def calculate_vari(image_path):
     # Read the orthomosaic map image
     image = cv2.imread(image_path)
@@ -13,7 +14,11 @@ def calculate_vari(image_path):
     R, G, B = cv2.split(image)
 
     # Calculate VARI
-    VARI = (G.astype(float) - R.astype(float)) / (G + R - B)
+    denominator = G + R - B + 1e-8  # Add a small constant to avoid division by zero
+    VARI = (G.astype(float) - R.astype(float)) / denominator
+
+    # Replace NaN or infinite values with zero
+    VARI = np.nan_to_num(VARI)
 
     return VARI
 
